@@ -1,6 +1,14 @@
 .App {
   /* text-align: center; */
-  padding: 10px;
+  padding-left: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+li.str:before{
+  content: "*";
 }
 
 .App-logo {
