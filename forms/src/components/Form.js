@@ -7,36 +7,51 @@ const Form = (props) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    const formDataDivStyle = {
+        textAlign: "left", 
+        width: "450px", 
+        margin: "auto",
+    }
+
+    const inputDataDivStyle = {
+        borderRadius: "5px",
+        backgroundColor: "#f2f2f2",
+        border: "1px solid darkgrey",
+        padding: "0px 10px",
+        margin: "5px",
+    }
+
     return (
         <div>
-            <form>
-                <div>
+            <form style={{ marginTop: "20px" }}>
+                <div style={inputDataDivStyle}>
                     <label htmlFor="firstname">First Name </label>
-                    <input type="text" onChange = { (e) => setFirstname(e.target.value)} />
+                    <input type="text" name="firstname" onChange = { (e) => setFirstname(e.target.value)} />
                 </div>
-                <div>
+                <div style={inputDataDivStyle}>
                     <label htmlFor="lastname">Last Name </label>
-                    <input type="text" onChange = { (e) => setLastname(e.target.value)}/>
+                    <input type="text" name="lastname" onChange = { (e) => setLastname(e.target.value)}/>
                 </div>
-                <div>
+                <div style={inputDataDivStyle}>
                     <label htmlFor="email">Email </label>
-                    <input type="text" onChange = { (e) => setEmail(e.target.value)}/>
+                    <input type="text" name="email" onChange = { (e) => setEmail(e.target.value)}/>
                 </div>
-                <div>
+                <div style={inputDataDivStyle}>
                     <label htmlFor="password">Password </label>
-                    <input type="text" onChange = { (e) => setPassword(e.target.value)} />
+                    <input type="text" name="password" onChange = { (e) => setPassword(e.target.value)} />
                 </div>
-                <div>
-                    <label htmlFor="cconfirmpassword">Confirm Pawword </label>
-                    <input type="text" onChange = { (e) => setConfirmPassword(e.target.value)}/>
+                <div style={inputDataDivStyle}>
+                    <label htmlFor="cconfirmpassword">Confirm Password </label>
+                    <input type="text" name="confirmpassword" onChange = { (e) => setConfirmPassword(e.target.value)}/>
                 </div>
             </form>
-            <div>
-                <h5>First Name {firsstname}</h5>
-                <h5>Last Name {lastname}</h5>
-                <h5>Email {email}</h5>
-                <h5>Password {password}</h5>
-                <h5>Confirm Password {confirmPassword}</h5>
+            <div style={ formDataDivStyle }>
+                <h3 style={{ textAlign: 'center' }}>Your Form Data</h3>
+                <p>First Name: {firsstname}</p>
+                <p>Last Name: {lastname}</p>
+                <p>Email: {email}</p>
+                <p>Password: {password}</p>
+                <p>Confirm Password: {confirmPassword}</p>
             </div>
         </div>
     )
