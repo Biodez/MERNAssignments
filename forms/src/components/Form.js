@@ -49,8 +49,8 @@ const Form = (props) => {
     const handleEmailChange = (e) => {
         setEmailError(e.target.value);
         setEmail(e.target.value)
-        if (e.target.value.length < 2) {
-            setEmailError("Email must be at least 2 characters")
+        if (e.target.value.length < 5) {
+            setEmailError("Email must be at least 5 characters")
         } else {
             setEmailError("")
         }
