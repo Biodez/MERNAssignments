@@ -30,7 +30,7 @@ const Form = (props) => {
         setFirstnameError(e.target.value);
         setFirstname(e.target.value)
         if (e.target.value.length < 2) {
-            setFirstnameError("First Name must be at least 2 characters")
+            setFirstnameError(<p>First Name must be at least 2 characters</p>)
         } else {
             setFirstnameError("")
         }
@@ -40,7 +40,7 @@ const Form = (props) => {
         setLastnameError(e.target.value);
         setLastname(e.target.value)
         if (e.target.value.length < 2) {
-            setLastnameError("Last Name must be at least 2 characters")
+            setLastnameError(<p>Last Name must be at least 2 characters</p>)
         } else {
             setLastnameError("")
         }
@@ -50,7 +50,7 @@ const Form = (props) => {
         setEmailError(e.target.value);
         setEmail(e.target.value)
         if (e.target.value.length < 5) {
-            setEmailError("Email must be at least 5 characters")
+            setEmailError(<p>Email must be at least 5 character</p>)
         } else {
             setEmailError("")
         }
@@ -60,7 +60,7 @@ const Form = (props) => {
         setPasswordError(e.target.value);
         setPassword(e.target.value)
         if (e.target.value.length < 8) {
-            setPasswordError("Password must be at least 8 character")
+            setPasswordError(<p>Password must be at least 8 characte</p>)
         } else {
             setPasswordError("")
         }
@@ -70,7 +70,7 @@ const Form = (props) => {
         setConfirmPasswordError(e.target.value)
         setConfirmPassword(e.target.value)
         if (password !== e.target.value) {
-            setConfirmPasswordError("Password must match")
+            setConfirmPasswordError(<p>Password must match</p>)
         } else {
             setConfirmPasswordError("")
         }

@@ -23,6 +23,10 @@ label {
   text-align: center;
 }
 
+p {
+  font-size: x-small;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
