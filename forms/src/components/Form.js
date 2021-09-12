@@ -10,6 +10,7 @@ const Form = (props) => {
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
     const formDataDivStyle = {
         textAlign: "left", 
@@ -65,6 +66,16 @@ const Form = (props) => {
         }
     }
 
+    const handleConfirmPassword = (e) => {
+        setConfirmPasswordError(e.target.value)
+        setConfirmPassword(e.target.value)
+        if (password !== e.target.value) {
+            setConfirmPasswordError("Password must match")
+        } else {
+            setConfirmPasswordError("")
+        }
+    }
+
     return (
         <div>
             <form style={{ marginTop: "20px" }}>
@@ -88,9 +99,10 @@ const Form = (props) => {
                     <input type="text" name="password" onChange = { (e) => handlePasswordChange(e)} />
                 </div>
                 {passwordError}
+                {confirmPasswordError}
                 <div style={inputDataDivStyle}>
                     <label htmlFor="cconfirmpassword">Confirm Password </label>
-                    <input type="text" name="confirmpassword" onChange = { (e) => setConfirmPassword(e.target.value)}/>
+                    <input type="text" name="confirmpassword" onChange = { (e) => handleConfirmPassword(e)}/>
                 </div>
             </form>
             <div style={ formDataDivStyle }>
