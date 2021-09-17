@@ -70,12 +70,6 @@ const reducer = (state, action) => {
   }
 };
 
-const formDataDivStyle = {
-    textAlign: "left", 
-    width: "450px", 
-    margin: "auto",
-}
-
 const inputDataDivStyle = {
     borderRadius: "5px",
     backgroundColor: "#f2f2f2",
