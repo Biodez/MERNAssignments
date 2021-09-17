@@ -96,13 +96,13 @@ const Form = (props) => {
                 {emailError}
                 <div style={inputDataDivStyle}>
                     <label htmlFor="password">Password </label>
-                    <input type="text" name="password" onChange = { (e) => handlePasswordChange(e)} />
+                    <input type="password" name="password" onChange = { (e) => handlePasswordChange(e)} />
                 </div>
                 {passwordError}
                 {confirmPasswordError}
                 <div style={inputDataDivStyle}>
                     <label htmlFor="cconfirmpassword">Confirm Password </label>
-                    <input type="text" name="confirmpassword" onChange = { (e) => handleConfirmPassword(e)}/>
+                    <input type="password" name="confirmpassword" onChange = { (e) => handleConfirmPassword(e)}/>
                 </div>
             </form>
             <div style={ formDataDivStyle }>

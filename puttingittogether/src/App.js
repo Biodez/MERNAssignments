@@ -1,5 +1,6 @@
 import './App.css';
 import BirthdayData from './components/birhtdayData';
+import UserForm from './components/UserForm';
 
 function App() {
   const bioData = [
@@ -37,6 +38,8 @@ function App() {
           hairColor = {element.hairColor}
         />
       ))}
+
+      {/* <UserForm /> */}
     </div>
   );
 }
