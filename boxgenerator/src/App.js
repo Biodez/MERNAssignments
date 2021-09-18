@@ -23,22 +23,27 @@ function App() {
     <div className="App">
       <form onSubmit = {handleColorSubmit}>
         Color
-        <input type="text" 
+        <input type="text"
+        style = {{margin: "10px"}}
         name="colortext" 
         id="colortext"
         onChange = {(e) => setColor(e.target.value)} 
         value = {color}/>
         <input type="number" 
         step="1"
+        style = {{margin: "10px"}}
         placeholder = "width"
         onChange = {(e) => setWidth(e.target.value)}
         value = {widthVal} />
         <input type="number" 
         step="1"
+        style = {{margin: "10px"}}
         placeholder = "height"
         onChange = {(e) => setHeight(e.target.value)}
         value = {heightVal} />
-        <button type="submit">Add Color</button>
+        <button 
+        style = {{margin: "10px"}}
+        type="submit">Add Color</button>
       </form>
       <h2>Display Boxes</h2>
       {BoxArray.map(
