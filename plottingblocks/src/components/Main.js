@@ -5,14 +5,14 @@ const Main = (props) => {
     return (
         <div
         style = {{
-            display: "flex",
+            display: "block",
             width: "488px",
             border: "1px solid black",
             height: "250px",
             backgroundColor: "#e06666",
             paddingTop: "10px",
             paddingBottom: "10px",
-            justifyContent: "space-evenly"
+            paddingLeft: "10px"
         }}>
             {props.children}
         </div>

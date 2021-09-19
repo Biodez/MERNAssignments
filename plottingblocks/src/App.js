@@ -15,7 +15,7 @@ function App() {
           <Subcontent />
           <Subcontent />
           <Subcontent />
-          {/* <Advertisement /> */}
+          <Advertisement />
         </Main> 
       </div>
     </div>

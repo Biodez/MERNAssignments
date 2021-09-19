@@ -1,10 +1,10 @@
 const Advertisement = () => {
     return (
         <div style = {{
-            display: "block",
+            display: "flex",
             border: "1px solid black",
-            height: "70px",
-            width : "450px",
+            height: "50px",
+            width : "460px",
             backgroundColor: "#b4a7dc"
         }}>
 
