@@ -53,13 +53,23 @@ function App() {
     <div className="App">
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
+          style = {{
+            marginTop: "20px"
+          }}
           type="text"
           name="todo"
           id="todo"
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
         />
-        <button style={{ margin: "10px" }} type="submit">
+        <button style={{ margin: "10px",
+                  backgroundColor: "blue",
+                  border: "1px solid blue",
+                  padding: "10px",
+                  display: "block",
+                  color: "white",
+                  margin: "0px auto",
+                  marginTop: "20px"}} type="submit">
           Add
         </button>
       </form>
