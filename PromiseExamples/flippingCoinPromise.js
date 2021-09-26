@@ -2,22 +2,25 @@ function tossCoin() {
     return Math.random() > 0.5 ? "heads" : "tails";
 }
 
-
 function fiveHeads() {
     return new Promise( (resolve, reject) => {
         // your code here!
         let headCount = 0;
         let attempts = 0;
-        while (headCount < 5) {
+
+        while (headCount < 5 && attempts <= 100) {
             attempts++;
+            console.log(`${tossCoin()} was flipped`);
             if (tossCoin() === "heads") {
-                resolve(`${tossCoin()} was flipped`)
+                headCount++;
             } else {
-                if (attempts > 100) {
-                    reject("The attempt is more than 100")
-                }
+                headCount = 0;
             }
-            headCount++;
+        }
+        if (attempts <= 100) {
+            resolve(`it took ${attempts} attempts to flip head 5 times`)
+        } else {
+            reject("Attempts have exceeded 100")
         }
      
     });
