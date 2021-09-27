@@ -31,4 +31,15 @@ class Deck {
 
 const deck = new Deck()
 
+const noMondays = new Promise((res, rej) => {
+  if (new Date().getDate() !== 1) {
+    res("It's not Monday")
+  } else {
+    rej("I don't like Mondays")
+  }
+})
+
+noMondays.then(res => console.log(res))
+.catch(rej => console.log(rej))
+
 

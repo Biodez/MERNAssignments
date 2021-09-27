@@ -26,7 +26,9 @@ const Tabs = () => {
                 <li onClick={handleTab3} className = {activeTab === "Tab3" ? "active" : ""}>Tab 3</li>
             </ul>
             <div className = "outlet">
-                {activeTab === "Tab1" ? <FirstTab /> : <SecondTab />}
+                {/* {activeTab === "Tab1" ? <FirstTab /> : <SecondTab />} */}
+                {activeTab === "Tab1" && <FirstTab />}
+                {activeTab === "Tab2" && <SecondTab />}
                 {activeTab === "Tab3" && <ThirdTab />}
             </div>
         </div>

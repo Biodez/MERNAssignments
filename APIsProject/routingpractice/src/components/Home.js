@@ -1,31 +1,26 @@
 import React from "react";
 
 function Home(props) {
+  const { word, font, bground } = props;
   console.log(props);
-  if (!props.word) {
+  if (!word) {
     return (
       <div>
         <h1>Welcome!</h1>
       </div>
     );
-  } else if (isNaN(props.word)) {
+  } else if (isNaN(word)) {
     return (
       <div>
-        <h1
-          style={
-            props.font
-              ? { color: props.font, backgroundColor: props.bground }
-              : null
-          }
-        >
-          The word is: {props.word}
+        <h1 style={font ? { color: font, backgroundColor: bground } : null}>
+          The word is: {word}
         </h1>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>The word is: {props.word}</h1>
+        <h1>The word is: {word}</h1>
       </div>
     );
   }
