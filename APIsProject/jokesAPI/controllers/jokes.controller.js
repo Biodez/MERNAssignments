@@ -38,8 +38,10 @@ const updateExistingJoke = (request, response) => {
       new: true,
       runValidators: true,
     })
-    .then((updatedJoke) => res.json({ user: updatedJoke }))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .then((updatedJoke) => response.json({ user: updatedJoke }))
+    .catch((err) =>
+      response.json({ message: "Something went wrong", error: err })
+    );
 };
 
 const deleteAnExistingJoke = (request, response) => {
