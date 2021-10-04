@@ -29,7 +29,7 @@ function App() {
         }
         setResult(details)
         setId("");
-      })
+      }).catch(err => console.log(err))
     } else if (option === "planets" && id.length > 0) {
       axios.get(`https://swapi.dev/api/${option}/${id}`)
       .then(response => {
@@ -43,7 +43,7 @@ function App() {
         }
         setResult(planet_details);
         setId("")
-      })
+      }).catch(err => console.log(err))
     }
 };
 
@@ -55,8 +55,10 @@ function App() {
           name="option"
           onChange={(e) => handleChange(e)}
           style={{ margin: "10px" }}
-          defaultValue = {'people'}
         >
+          <option value="" disabled selected>
+              Select...
+          </option>
           <option value="people">people</option>
           <option value="planets">planets</option>
         </select>
