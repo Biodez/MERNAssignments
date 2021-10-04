@@ -26,7 +26,7 @@ const findOneJoke = (request, response) => {
 const addNewJoke = (request, response) => {
   jokeModel
     .create(request.body)
-    .then((newlyCreatedJoke) => response.jsom({ joke: newlyCreatedJoke }))
+    .then((newlyCreatedJoke) => response.json({ joke: newlyCreatedJoke }))
     .catch((err) =>
       response.json({ message: "Something went wrong", error: err })
     );
