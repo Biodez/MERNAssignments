@@ -38,7 +38,7 @@ const updateExistingJoke = (request, response) => {
       new: true,
       runValidators: true,
     })
-    .then((updatedJoke) => response.json({ user: updatedJoke }))
+    .then((updatedJoke) => response.json(updatedJoke))
     .catch((err) =>
       response.json({ message: "Something went wrong", error: err })
     );

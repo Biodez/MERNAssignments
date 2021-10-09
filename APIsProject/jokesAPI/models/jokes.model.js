@@ -5,7 +5,6 @@ const jokesSchema = new mongoose.Schema({
   punchline: String,
   createdAt: String,
   updatedAt: String,
-  __v: Number,
 });
 
 const Jokes = mongoose.model("Jokes", jokesSchema);
