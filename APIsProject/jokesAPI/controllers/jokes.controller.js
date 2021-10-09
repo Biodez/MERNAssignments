@@ -16,7 +16,7 @@ const getAllJokes = (request, response) => {
 
 const findOneJoke = (request, response) => {
   jokeModel
-    .findOne({ _id: request.params.id })
+    .findOne({ _id: request.params._id })
     .then((oneSingleJoke) => response.json({ joke: oneSingleJoke }))
     .catch((err) =>
       response.json({ message: "Something went wrong", error: err })
@@ -34,7 +34,7 @@ const addNewJoke = (request, response) => {
 
 const updateExistingJoke = (request, response) => {
   jokeModel
-    .findOneAndUpdate({ _id: request.params.id }, request.body, {
+    .findOneAndUpdate({ _id: request.params._id }, request.body, {
       new: true,
       runValidators: true,
     })

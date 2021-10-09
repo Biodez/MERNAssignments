@@ -1,22 +1,64 @@
-const { response } = require("express");
-const Person = require("../models/person.model")
+const { request, response } = require("express");
+const Person = require("../models/person.model");
 
 const index = (request, response) => {
-    response.json({
-        message: "Hello world"
-    })
-}
+  response.json({
+    message: "Hello world",
+  });
+};
 
 const createPerson = (request, response) => {
-    Person.create(request.body)
-        .then((createdPerson) => response.json({person: createdPerson}))
-        .catch((error) => {
-            response.status(400).json({message: `something went wrong ${error}`})
-        })
-}
+  const { body } = request;
+  Person.create(body)
+    .then((createdPerson) => response.json({ person: createdPerson }))
+    .catch((error) => {
+      response.status(400).json({ message: `something went wrong ${error}` });
+    });
+};
 
+const getAllPerson = (_request, response) => {
+  Person.find()
+    .then((allPerson) => response.json({ Persons: allPerson }))
+    .catch((error) => {
+      response.status(400).json({ message: `something went wrong ${error}` });
+    });
+};
+
+const getOnePerson = (request, response) => {
+  const { params } = request;
+  Person.findOne({ _id: params._id })
+    .then((onePerson) => response.json({ person: onePerson }))
+    .catch((error) => {
+      response.status(400).json({ message: `something went wrong ${error}` });
+    });
+};
+
+const updateExistingPerson = (request, response) => {
+  const { params } = request;
+  Person.findOneAndUpdate({ _id: params._id }, request.body, {
+    new: true,
+    runValidators: true,
+  })
+    .then((updatedPerson) => response.json({ person: updatedPerson }))
+    .catch((error) => {
+      response.status(400).json({ message: `something went wrong ${error}` });
+    });
+};
+
+const deleteAnExistingPerson = (request, response) => {
+  const { params } = request;
+  Person.deleteOne({ _id: params._id })
+    .then((deletedPerson) => response.json({ personDeleted: deletedPerson }))
+    .catch((error) => {
+      response.status(400).json({ message: `something went wrong ${error}` });
+    });
+};
 
 module.exports = {
-    index,
-    createPerson
-}
+  index,
+  createPerson,
+  getAllPerson,
+  getOnePerson,
+  updateExistingPerson,
+  deleteAnExistingPerson,
+};
