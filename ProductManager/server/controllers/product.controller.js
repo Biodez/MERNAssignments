@@ -15,7 +15,28 @@ const createProduct = (request, response) => {
     });
 };
 
+const getAllProduct = (_request, response) => {
+  productManager
+    .find()
+    .then((products) => response.json(products))
+    .catch((error) => {
+      response.status(400).json(error);
+    });
+};
+
+const getOneProduct = (request, response) => {
+  const { params } = request;
+  productManager
+    .findOne({ _id: params._id })
+    .then((products) => response.json(products))
+    .catch((error) => {
+      response.status(400).json(error);
+    });
+};
+
 module.exports = {
   healthCheck,
   createProduct,
+  getAllProduct,
+  getOneProduct,
 };

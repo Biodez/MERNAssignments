@@ -13,6 +13,7 @@ const PersonSchema = new mongoose.Schema({
       },
       age: {
         type: Number,
+        required: [true, "Age is required"],
         min: [1, "You must be at least 1 or older to register"],
         max: [150, "You must be at most 149 years old to register"]
       },
