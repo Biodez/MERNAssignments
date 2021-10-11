@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {navigate} from '@reach/router'
 
 function UpdateProduct(props) {
   const { id } = props;
@@ -25,9 +26,10 @@ function UpdateProduct(props) {
       })
       .then((response) => console.log(response));
 
-    setTitle("");
-    setPrice("");
-    setDescription("");
+    // setTitle("");
+    // setPrice("");
+    // setDescription("");
+    navigate("/product")
   };
 
   const inputDataDivStyle = {
