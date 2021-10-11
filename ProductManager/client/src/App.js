@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Main path="/" />
+        <Main path="/product" />
         <DisplayProduct path = "/product/:id" />
         <UpdateProduct path = "/product/:id/edit" />
       </Router>

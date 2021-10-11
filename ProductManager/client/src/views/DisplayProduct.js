@@ -10,7 +10,7 @@ function DisplayProduct(props) {
     axios
       .get(`http://localhost:4000/api/product/${id}`)
       .then((response) => {
-        setProduct(response.data);
+        setProduct([...product, response.data]);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -19,8 +19,8 @@ function DisplayProduct(props) {
     axios
       .delete(`http://localhost:4000/api/product/${personId}`)
       .then((response) => setProduct(response.data));
-      navigate("/")
-      .catch(err => navigate("/"))
+      navigate("/product")
+      .catch(err => navigate("/product"))
   };
   return (
     <div>
