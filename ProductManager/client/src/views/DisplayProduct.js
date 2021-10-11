@@ -33,10 +33,10 @@ function DisplayProduct(props) {
       <button
         onClick={(e) => deletePerson(id)}
         style={{
-          "padding-left": "20px",
-          "padding-right": "20px",
+          paddingLeft: "20px",
+          paddingRight: "20px",
           fontSize: "15px",
-          "margin-left": "10px",
+          marginLeft: "10px",
         }}
       >
         Delete

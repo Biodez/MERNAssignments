@@ -71,8 +71,8 @@ function UpdateProduct(props) {
           <button
             type="submit"
             style={{
-              "padding-left": "20px",
-              "padding-right": "20px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
               fontSize: "15px",
             }}
           >

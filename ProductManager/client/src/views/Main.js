@@ -18,16 +18,23 @@ const Main = () => {
   }, []);
 
   const removeFromDom = (personId) => {
-    const filteredPerson = allProducts.filter(person => person._id !== personId)
-    setAllProducts(filteredPerson)
-  }
+    const filteredPerson = allProducts.filter(
+      (person) => person._id !== personId
+    );
+    setAllProducts(filteredPerson);
+  };
 
   return (
     <div>
       <p>Product Manager</p>
-      <ProductForm setAllProducts={setAllProducts} allProducts={allProducts}/>
+      <ProductForm setAllProducts={setAllProducts} allProducts={allProducts} />
       <hr />
-      {loaded && <DisplayProducts allProducts={allProducts} removeFromDom={removeFromDom}/>}
+      {loaded && (
+        <DisplayProducts
+          allProducts={allProducts}
+          removeFromDom={removeFromDom}
+        />
+      )}
     </div>
   );
 };
