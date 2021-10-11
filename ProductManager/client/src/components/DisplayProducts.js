@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import axios from 'axios';
+import axios from "axios";
 
 const DisplayProducts = (props) => {
   const { removeFromDom } = props;
@@ -15,7 +15,17 @@ const DisplayProducts = (props) => {
         return (
           <p key={index}>
             <Link to={`/product/${product._id}`}>{product.title}</Link>
-            <button onClick={(e) => deletePerson(product._id)}>Delete</button>
+            <button
+              onClick={(e) => deletePerson(product._id)}
+              style={{
+                "padding-left": "20px",
+                "padding-right": "20px",
+                fontSize: "15px",
+                "margin-left": "10px",
+              }}
+            >
+              Delete
+            </button>
           </p>
         );
       })}

@@ -67,7 +67,7 @@ function ProductForm(props) {
             style={{
               "padding-left": "20px",
               "padding-right": "20px",
-              fontSize: "15px",
+              "fontSize": "15px",
             }}
           >
             Create

@@ -10,17 +10,19 @@ function DisplayProduct(props) {
     axios
       .get(`http://localhost:4000/api/product/${id}`)
       .then((response) => {
-        setProduct([...product, response.data]);
+        setProduct(response.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, product]);
 
   const deletePerson = (personId) => {
     axios
       .delete(`http://localhost:4000/api/product/${personId}`)
-      .then((response) => setProduct(response.data));
-      navigate("/product")
-      .catch(err => navigate("/product"))
+      .then((response) => {
+        setProduct(response.data);
+        navigate("/product");
+      })
+      .catch((err) => navigate("/product"));
   };
   return (
     <div>
@@ -28,7 +30,17 @@ function DisplayProduct(props) {
       <p>Price: ${product.price}</p>
       <p>Description: {product.description}</p>
       <Link to={`/product/${product._id}/edit`}>Edit</Link>
-      <button onClick={(e) => deletePerson(id)}>Delete</button>
+      <button
+        onClick={(e) => deletePerson(id)}
+        style={{
+          "padding-left": "20px",
+          "padding-right": "20px",
+          fontSize: "15px",
+          "margin-left": "10px",
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }
