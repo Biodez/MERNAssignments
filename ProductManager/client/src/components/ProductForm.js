@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function ProductForm() {
+function ProductForm(props) {
+  const { setAllProducts, allProducts } = props;
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -17,7 +18,9 @@ function ProductForm() {
 
     axios
       .post("http://localhost:4000/api/product", productDetails)
-      .then((response) => console.log(response))
+      .then((response) => {
+          setAllProducts([...allProducts, response.data])
+      })
       .catch((err) => console.log(err));
 
     setTitle("");
@@ -60,7 +63,15 @@ function ProductForm() {
           />
         </div>
         <div className="buttonHolder">
-          <button style = {{"padding-left": "20px", "padding-right": "20px", "fontSize":"15px"}}>Create</button>
+          <button
+            style={{
+              "padding-left": "20px",
+              "padding-right": "20px",
+              fontSize: "15px",
+            }}
+          >
+            Create
+          </button>
         </div>
       </form>
     </div>

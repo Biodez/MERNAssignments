@@ -16,12 +16,18 @@ const Main = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const removeFromDom = (personId) => {
+    const filteredPerson = allProducts.filter(person => person._id !== personId)
+    setAllProducts(filteredPerson)
+  }
+
   return (
     <div>
       <p>Product Manager</p>
-      <ProductForm />
+      <ProductForm setAllProducts={setAllProducts} allProducts={allProducts}/>
       <hr />
-      {loaded && <DisplayProducts allProducts={allProducts} />}
+      {loaded && <DisplayProducts allProducts={allProducts} removeFromDom={removeFromDom}/>}
     </div>
   );
 };

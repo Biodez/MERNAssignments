@@ -1,43 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from "@reach/router";
 import axios from "axios";
 
-function PersonList() {
-  const [people, setPeople] = useState([]);
-  useEffect(() => {
+function PersonList(props) {
+  const { removeFromDom } = props;
+  const deletePerson = (personId) => {
     axios
-      .get("http://localhost:8000/api/people")
-      .then((response) => {
-        setPeople(response.data.Persons);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      .delete(`http://localhost:8000/api/people/${personId}`)
+      .then((response) => removeFromDom(personId));
+  };
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Actions available</th>
-          </tr>
-        </thead>
-        <tbody>
-          {people.map((person, index) => (
-            <tr key={index}>
-              <td>{person.firstName}</td>
-              <td>{person.lastName}</td>
-              <td>{person.age}</td>
-              <td>{person.email}</td>
-              <td>
-                <button type="button">EDIT</button>
-                <button type="button">DELETE</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {props.people.map((person, idx) => {
+        return (
+          <div key={idx}>
+            <p>
+              Name: {person.lastName}, {person.firstName}
+            </p>
+            <p>Age: {person.age}</p>
+            <p>Email: {person.email}</p>
+            <Link to={`/people/${person._id}/edit`}>Edit</Link>
+            <button
+              onClick={(e) => {
+                deletePerson(person._id);
+              }}
+            >
+              Delete
+            </button>
+            <hr />
+          </div>
+        );
+      })}
     </div>
   );
 }
