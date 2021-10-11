@@ -9,9 +9,9 @@ const createProduct = (request, response) => {
   const { body } = request;
   productManager
     .create(body)
-    .then((createdProduct) => response.json({ product: createdProduct }))
+    .then((createdProduct) => response.json(createdProduct))
     .catch((error) => {
-      response.status(400).json({ message: `something went wrong ${error}` });
+      response.status(400).json(error);
     });
 };
 
@@ -48,13 +48,14 @@ const updateExistingProduct = (request, response) => {
 };
 
 const deleteAnExistingProduct = (request, response) => {
-    const { params } = request;
-    productManager.deleteOne({ _id: params._id })
-      .then((deletedProduct) => response.json(deletedProduct))
-      .catch((error) => {
-        response.status(400).json(error);
-      });
-  };
+  const { params } = request;
+  productManager
+    .deleteOne({ _id: params._id })
+    .then((deletedProduct) => response.json(deletedProduct))
+    .catch((error) => {
+      response.status(400).json(error);
+    });
+};
 
 module.exports = {
   healthCheck,
