@@ -1,29 +1,23 @@
-import axios from "axios";
 import React, { useState } from "react";
-import '../App.css'
+import "../App.css";
 
-function PersonForm() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState({});
+function PersonForm(props) {
+  const {
+    initialFirstName,
+    initialLastName,
+    initialAge,
+    initialEmail,
+    onSubmitProp,
+    errors
+  } = props;
+  const [firstName, setFirstName] = useState(initialFirstName);
+  const [lastName, setLastName] = useState(initialLastName);
+  const [age, setAge] = useState(initialAge);
+  const [email, setEmail] = useState(initialEmail);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPerson = {
-      firstName,
-      lastName,
-      age,
-      email,
-    };
-    axios
-      .post("http://localhost:8000/api/people", newPerson)
-      .then((response) => console.log(response))
-      .catch((err) => {
-        console.log(err.response.data);
-        setErrors(err.response.data.errors);
-      });
+    onSubmitProp({ firstName, lastName, age, email });
     setFirstName("");
     setLastName("");
     setAge("");
@@ -41,7 +35,7 @@ function PersonForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div style = {inputDataDivStyle}>
+        <div style={inputDataDivStyle}>
           <label htmlFor="firstName">First Name: </label>
           <input
             type="text"
@@ -50,7 +44,7 @@ function PersonForm() {
           />
           {errors && errors.firstName && <p>{errors.firstName.message}</p>}
         </div>
-        <div style = {inputDataDivStyle}>
+        <div style={inputDataDivStyle}>
           <label htmlFor="lastName">Last Name: </label>
           <input
             type="text"
@@ -59,7 +53,7 @@ function PersonForm() {
           />
           {errors && errors.lastName && <p>{errors.lastName.message}</p>}
         </div>
-        <div style = {inputDataDivStyle}>
+        <div style={inputDataDivStyle}>
           <label htmlFor="age">Age: </label>
           <input
             type="number"
@@ -68,7 +62,7 @@ function PersonForm() {
           />
           {errors && errors.age && <p>{errors.age.message}</p>}
         </div>
-        <div style = {inputDataDivStyle}>
+        <div style={inputDataDivStyle}>
           <label htmlFor="email">Email: </label>
           <input
             type="email"

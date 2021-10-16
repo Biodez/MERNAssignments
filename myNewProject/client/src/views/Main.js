@@ -6,6 +6,7 @@ import PersonList from "../components/PersonList";
 const Main = () => {
   const [people, setPeople] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [errors, setErrors] = useState({});
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/people")
@@ -15,17 +16,32 @@ const Main = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-const removeFromDom = (personId) => {
-  const filteredPerson = people.filter(person => person._id !== personId)
-  setPeople(filteredPerson)
-} 
+
+  const createPerson = (newPerson) => {
+    axios
+      .post("http://localhost:8000/api/people", newPerson)
+      .then((response) => {
+        setPeople([...people, response.data.person]);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        setErrors(err.response.data.errors);
+      });
+  };
 
   return (
     <div>
-      <PersonForm />
+      <PersonForm
+        onSubmitProp={createPerson}
+        initialFirstName=""
+        initialLastName=""
+        initialAge=""
+        initialEmail=""
+        errors={errors}
+      />
       <p>All Peoples</p>
       <hr />
-      {loaded && <PersonList people={people} removeFromDom={removeFromDom} />}
+      {loaded && <PersonList />}
     </div>
   );
 };
