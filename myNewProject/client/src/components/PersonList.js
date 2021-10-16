@@ -8,10 +8,10 @@ function PersonList() {
   useEffect(() => {
     axios.get('http://localhost:8000/api/people/')
       .then(response => setPeople(response.data.Persons))
-  })
+  }, [])
 
   const removeFromDom = (personId) => {
-    const filteredPerson = people.filter((person) => person._id !== personId);
+    let filteredPerson = people.filter((person) => person._id !== personId);
     setPeople(filteredPerson);
   };
 

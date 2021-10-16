@@ -4,37 +4,44 @@ import DisplayProducts from "../components/DisplayProducts";
 import axios from "axios";
 
 const Main = () => {
-  const [allProducts, setAllProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [errors, setErrors] = useState({});
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/product")
       .then((response) => {
         console.log(response.data);
-        setAllProducts(response.data);
+        setProduct(response.data);
         setLoaded(true);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const removeFromDom = (personId) => {
-    const filteredPerson = allProducts.filter(
-      (person) => person._id !== personId
-    );
-    setAllProducts(filteredPerson);
+  const createProduct = (newProduct) => {
+    axios
+      .post("http://localhost:4000/api/product", newProduct)
+      .then((response) => {
+        setProduct([...product, response.data]);
+      })
+      .catch((err) => {
+        console.log(err.response.data.errors);
+        setErrors(err.response.data.errors);
+      });
   };
 
   return (
     <div>
       <p>Product Manager</p>
-      <ProductForm setAllProducts={setAllProducts} allProducts={allProducts} />
+      <ProductForm
+        onSubmitProp={createProduct}
+        initialTitle=""
+        initialPrice=""
+        initialDescription=""
+        errors={errors}
+      />
       <hr />
-      {loaded && (
-        <DisplayProducts
-          allProducts={allProducts}
-          removeFromDom={removeFromDom}
-        />
-      )}
+      {loaded && <DisplayProducts />}
     </div>
   );
 };
