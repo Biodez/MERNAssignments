@@ -31,4 +31,17 @@ class SLL {
   front() {
     return this.head === null ? null : this.head.value;
   }
+
+  display() {
+    var current = this.head;
+    if (current === null) {
+      return current;
+    }
+    while (current !== null) {
+      console.log(current.val);
+      current = current.next;
+      console.log("--->");
+    }
+    console.log("null");
+  }
 }
